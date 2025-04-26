@@ -19,40 +19,92 @@ export default function Home() {
   const [todos, setTodos] = useState([]);
   const [showFinished, setShowFinished] = useState(false);
 
-  const fetchTodos = async () => {
-    if (session) {
-      const res = await fetch(`/api/server/${username}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      });
-      const data = await res.json();
-      if (data.success) {
-        setTodos(data.todos);
-      } else {
-        console.error("Failed to fetch todos");
-      }
-    } else {
-      const res = await fetch('/api/server', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      });
-      const data = await res.json();
-      if (data.success) {
-        setTodos(data.todos);
-      } else {
-        console.error("Failed to fetch todos");
-      }
-    }
-  };
-
   useEffect(() => {
+    const fetchTodos = async () => {
+      if (session) {
+        const res = await fetch(`/api/server/${username}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json();
+        if (data.success) {
+          setTodos(data.todos);
+        } else {
+          console.error("Failed to fetch todos");
+        }
+      } else {
+        const res = await fetch('/api/server', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json();
+        if (data.success) {
+          setTodos(data.todos);
+        } else {
+          console.error("Failed to fetch todos");
+        }
+      }
+    };
     fetchTodos();
   }, []);
 
   //Load todos from mongodb when app starts and Automatically save todos to mongodb whenever they change
   useEffect(() => {
+    const fetchTodos = async () => {
+      if (session) {
+        const res = await fetch(`/api/server/${username}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json();
+        if (data.success) {
+          setTodos(data.todos);
+        } else {
+          console.error("Failed to fetch todos");
+        }
+      } else {
+        const res = await fetch('/api/server', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json();
+        if (data.success) {
+          setTodos(data.todos);
+        } else {
+          console.error("Failed to fetch todos");
+        }
+      }
+    };
     fetchTodos();
-  }, [todos, session]);
+  }, [todos]);
+  useEffect(() => {
+    const fetchTodos = async () => {
+      if (session) {
+        const res = await fetch(`/api/server/${username}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json();
+        if (data.success) {
+          setTodos(data.todos);
+        } else {
+          console.error("Failed to fetch todos");
+        }
+      } else {
+        const res = await fetch('/api/server', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json();
+        if (data.success) {
+          setTodos(data.todos);
+        } else {
+          console.error("Failed to fetch todos");
+        }
+      }
+    };
+    fetchTodos();
+  }, [ session]);
 
   const handleAdd = async () => {
     if (todo.trim().length < 3) return;
