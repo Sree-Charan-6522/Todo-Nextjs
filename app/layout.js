@@ -1,9 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
-import Madeby from "@/components/Madeby";
 import Toasted from "@/components/Toasted";
 import Sessionwarpper from "@/components/Sessionwarpper";
+import Madeby from "@/components/Madeby";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <Sessionwarpper>
         <NavBar />
         {children}
-        <Madeby />
+      <Madeby />
         </Sessionwarpper>
         <script src="https://cdn.lordicon.com/lordicon.js"></script>
       </body>

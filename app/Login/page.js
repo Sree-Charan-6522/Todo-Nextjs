@@ -8,8 +8,8 @@ const Login = () => {
 
     return (
         <>
-            <div className="bg-[#121212] relative h-[53.1em] flex justify-center items-start shadow-[inset_0_0_25px_rgba(225,0,0,0.4)]  max-md:h-0 ">
-                <div className="bg-[#1E1E1E] h-[36em] w-[38em] px-6 py-4 mt-20 rounded-lg flex flex-col max-md:shadow-[inset_0_0_25px_rgba(225,0,0,0.4)] text-[rgb(237,237,237)] max-md:absolute max-md:mt-0  max-md:w-screen max-md:h-[34em] max-md:px-2 max-md:rounded-none">
+            <div className="bg-[#121212] h-[49.1em] flex justify-center items-start shadow-[inset_0_0_25px_rgba(225,0,0,0.4)]  max-md:h-screen max-md:overflow-hidden">
+            <div className="bg-[#1E1E1E] h-[36em] w-[38em] px-6 py-4 mt-20 rounded-lg flex flex-col max-md:shadow-[inset_0_0_25px_rgba(225,0,0,0.4)] text-[rgb(237,237,237)] max-md:mt-0  max-md:w-screen max-md:h-full max-md:px-2 max-md:rounded-none">
                     <div className='flex flex-col items-center justify-center h-full'>
                         <h1 className="text-2xl font-bold text-center mt-4">Login</h1>
                         <p className='text-lg font-bold text-center mt-4'>Login to access all the content.</p>

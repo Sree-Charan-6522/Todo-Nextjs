@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSession } from "next-auth/react";
 import LoginReminder from "@/components/LoginReminder";
+import Madeby from "@/components/Madeby";
 
 
 
@@ -159,8 +160,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="bg-[#121212] relative h-[53.1em] flex justify-center items-start shadow-[inset_0_0_25px_rgba(225,0,0,0.4)]  max-md:h-0 ">
-        <div className="bg-[#1E1E1E] h-[36em] w-[38em] px-6 py-4 mt-20 rounded-lg flex flex-col max-md:shadow-[inset_0_0_25px_rgba(225,0,0,0.4)] text-[rgb(237,237,237)] max-md:absolute max-md:mt-0  max-md:w-screen max-md:h-[34em] max-md:px-2 max-md:rounded-none">
+      <div className="bg-[#121212] h-[49.1em] flex justify-center items-start shadow-[inset_0_0_25px_rgba(225,0,0,0.4)]  max-md:h-screen max-md:overflow-hidden">
+        <div className="bg-[#1E1E1E] h-[36em] w-[38em] px-6 py-4 mt-20 rounded-lg flex flex-col max-md:shadow-[inset_0_0_25px_rgba(225,0,0,0.4)] text-[rgb(237,237,237)] max-md:mt-0  max-md:w-screen max-md:h-full max-md:px-2 max-md:rounded-none">
           <h1 className="font-extrabold text-2xl px-8 py-4 max-md:px-4 max-md:py-2 text-[rgb(237,237,237)]">
             My-Task  Manage your todos at one place
           </h1>
@@ -228,7 +229,7 @@ export default function Home() {
           </div>
           <span className="h-[1px] bg-gray-600 w-[85%] mx-8"></span>
           <h2 className="font-bold text-xl px-4 mt-2">Your Todos</h2>
-          <div className="flex flex-col gap-4 my-4 w-full px-4 overflow-y-auto">
+          <div className="flex flex-col gap-4 my-4 w-full px-4 overflow-auto">
             {todos.length === 0 && <div>No Todos to Display</div>}
             {todos.map(
               (item) =>
@@ -309,6 +310,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      
     </>
   );
 }
