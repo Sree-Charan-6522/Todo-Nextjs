@@ -35,7 +35,7 @@ function LoginReminder() {
         &times;
       </button>
 
-      <h2 className="text-xl font-semibold mb-4">Please Login or Continue as Guest</h2>
+      <h2 className="text-xl font-bold text-black mb-4">Please Login or Continue as Guest</h2>
 
       <div className="flex justify-center gap-4">
         <Link href="/Login" className="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">

@@ -21,88 +21,55 @@ export default function Home() {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      if (session) {
-        const res = await fetch(`/api/server/${username}`, {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        });
-        const data = await res.json();
-        if (data.success) {
-          setTodos(data.todos);
-        } else {
-          console.error("Failed to fetch todos");
-        }
-      } else {
-        const res = await fetch('/api/server', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        });
-        const data = await res.json();
-        if (data.success) {
-          setTodos(data.todos);
-        } else {
-          console.error("Failed to fetch todos");
-        }
-      }
-    };
-    fetchTodos();
+    const url = session ? `/api/server/${username}` : `/api/server`;
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    const data = await res.json();
+    if (data.success) {
+      setTodos(data.todos);
+    } else {
+      console.error("Failed to fetch todos");
+    }
+  };
+
+  fetchTodos();
   }, []);
 
   //Load todos from mongodb when app starts and Automatically save todos to mongodb whenever they change
   useEffect(() => {
     const fetchTodos = async () => {
-      if (session) {
-        const res = await fetch(`/api/server/${username}`, {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        });
-        const data = await res.json();
-        if (data.success) {
-          setTodos(data.todos);
-        } else {
-          console.error("Failed to fetch todos");
-        }
+      const url = session ? `/api/server/${username}` : `/api/server`;
+      const res = await fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      if (data.success) {
+        setTodos(data.todos);
       } else {
-        const res = await fetch('/api/server', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        });
-        const data = await res.json();
-        if (data.success) {
-          setTodos(data.todos);
-        } else {
-          console.error("Failed to fetch todos");
-        }
+        console.error("Failed to fetch todos");
       }
     };
+  
     fetchTodos();
   }, [todos]);
   useEffect(() => {
     const fetchTodos = async () => {
-      if (session) {
-        const res = await fetch(`/api/server/${username}`, {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        });
-        const data = await res.json();
-        if (data.success) {
-          setTodos(data.todos);
-        } else {
-          console.error("Failed to fetch todos");
-        }
+      const url = session ? `/api/server/${username}` : `/api/server`;
+      const res = await fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      if (data.success) {
+        setTodos(data.todos);
       } else {
-        const res = await fetch('/api/server', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        });
-        const data = await res.json();
-        if (data.success) {
-          setTodos(data.todos);
-        } else {
-          console.error("Failed to fetch todos");
-        }
+        console.error("Failed to fetch todos");
       }
     };
+  
     fetchTodos();
   }, [ session]);
 
@@ -112,19 +79,12 @@ export default function Home() {
     const id = uuidv4(); // generate ID here
     const isCom = false; // default completion status
 
-    if (session) {
-      const res = await fetch(`/api/server/${username}`, {
-        method: 'POST',
-        body: JSON.stringify({ id, todo, isCom }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }else{
-      const res = await fetch('/api/server', {
-        method: 'POST',
-        body: JSON.stringify({ id, todo, isCom }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
+    const url = session ? `/api/server/${username}` : `/api/server`;
+    const res = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({ id, todo, isCom }),
+      headers: { 'Content-Type': 'application/json' }
+    });
 
     setTodos([...todos, { id: id, todo, isCom: isCom }]);
     setTodo(""); // Clear input after adding
@@ -144,36 +104,24 @@ export default function Home() {
   const handleEdit = (id) => {
     const itemToEdit = todos.find((item) => item.id === id);
 
-    if (session) {
-      const res = fetch(`/api/server/${username}`, {
-        method: 'DELETE',
+    const url = session ? `/api/server/${username}` : `/api/server`;
+    const res = fetch(url, {
+      method: 'DELETE',
         body: JSON.stringify({ id: itemToEdit.id }),
         headers: { 'Content-Type': 'application/json' }
       });
-    }
-    const res = fetch('/api/server', {
-      method: 'DELETE',
-      body: JSON.stringify({ id: itemToEdit.id }),
-      headers: { 'Content-Type': 'application/json' }
-    });
 
     setTodo(itemToEdit.todo);
     setTodos(todos.filter((item) => item.id !== id));
   };
 
   const handleDelete = (id) => {
-    if (session) {
-      const res = fetch(`/api/server/${username}`, {
-        method: 'DELETE',
+    const url = session ? `/api/server/${username}` : `/api/server`;
+    const res = fetch(url, {
+      method: 'DELETE',
         body: JSON.stringify({ id: id }),
         headers: { 'Content-Type': 'application/json' }
       });
-    }
-    const res = fetch('/api/server', {
-      method: 'DELETE',
-      body: JSON.stringify({ id: id }),
-      headers: { 'Content-Type': 'application/json' }
-    });
 
     setTodos(todos.filter((item) => item.id !== id));
 
@@ -195,18 +143,13 @@ export default function Home() {
 
 
   const handleCheck = (item) => {
-    if (session) {
-      const res = fetch(`/api/server/${username}`, {
-        method: 'POST',
-        body: JSON.stringify({ id: item.id, todo: item.todo, isCom: !item.isCom }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
-    const res = fetch('/api/server', {
+    const url = session ? `/api/server/${username}` : `/api/server`;
+    const res = fetch(url, {
       method: 'POST',
       body: JSON.stringify({ id: item.id, todo: item.todo, isCom: !item.isCom }),
       headers: { 'Content-Type': 'application/json' }
     });
+    
     setTodos(todos.map((todo) => todo.id === item.id ? { ...todo, isCom: !todo.isCom } : todo));
   };
 

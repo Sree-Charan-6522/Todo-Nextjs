@@ -13,8 +13,8 @@ const NavBar = () => {
   const { data: session } = useSession()
   
   
+  const [loginshowToast, setloginShowToast] = useState(false)
   useEffect(() => {
-    const [loginshowToast, setloginShowToast] = useState(false)
     if (typeof session === 'undefined') return;
   
     const wasSignedOut = sessionStorage.getItem("signedOut");
